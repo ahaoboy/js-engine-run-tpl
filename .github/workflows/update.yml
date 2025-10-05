@@ -55,3 +55,15 @@ jobs:
           path: output
           pattern: output*
           merge-multiple: true
+
+      - name: Update README
+        run: |
+          ls -l output
+
+          for f in output/*.md; do
+            name=$(basename "$f" .md)
+            echo "## $name" >> README.md
+            echo -e "\n" >> README.md
+            cat "$f" >> README.md
+            echo -e "\n" >> README.md
+          done
