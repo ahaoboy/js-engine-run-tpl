@@ -35,3 +35,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: js engine run
         uses: ahaoboy/js-engine-run@v1
+
+      - name: update readme
+        run: |
+         ls -l
