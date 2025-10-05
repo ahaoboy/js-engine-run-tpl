@@ -1,0 +1,37 @@
+name: update
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+defaults:
+  run:
+    shell: bash -CeEuo pipefail {0}
+
+jobs:
+  bench:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macos-arm64
+            os: macos-latest
+          - name: windows
+            os: windows-latest
+          - name: ubuntu
+            os: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    name: bench-${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: js engine run
+        uses: ahaoboy/js-engine-run@v1
