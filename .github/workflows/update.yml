@@ -60,6 +60,8 @@ jobs:
         run: |
           ls -l output
 
+          rm -f README.md
+          cp README-TPL.tpl README.md
           for f in output/*.md; do
             name=$(basename "$f" .md)
             echo "## $name" >> README.md
@@ -67,3 +69,23 @@ jobs:
             cat "$f" >> README.md
             echo -e "\n" >> README.md
           done
+      - name: commit
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.email "504595380@qq.com"
+          git config --global user.name "ahaoboy-ci"
+          git add .
+          git commit -m"update"
+          cat README.md
+      - name: Upload README
+        uses: actions/upload-artifact@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          name: README
+          path: README.md
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
