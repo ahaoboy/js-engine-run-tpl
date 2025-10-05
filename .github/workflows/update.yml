@@ -61,7 +61,7 @@ jobs:
           ls -l output
 
           rm -f README.md
-          cp README-TPL.tpl README.md
+          cp README-TPL.md README.md
           for f in output/*.md; do
             name=$(basename "$f" .md)
             echo "## $name" >> README.md
