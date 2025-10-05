@@ -49,6 +49,7 @@ jobs:
     needs: [bench]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Download All Artifacts
         uses: actions/download-artifact@v4
         with:
@@ -58,10 +59,12 @@ jobs:
 
       - name: Update README
         run: |
+          ls -l
           ls -l output
 
           rm -f README.md
           cp README-TPL.md README.md
+
           for f in output/*.md; do
             name=$(basename "$f" .md)
             echo "## $name" >> README.md
