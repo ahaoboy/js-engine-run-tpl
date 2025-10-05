@@ -39,3 +39,4 @@ jobs:
       - name: update readme
         run: |
          ls -l
+         ls -l output
