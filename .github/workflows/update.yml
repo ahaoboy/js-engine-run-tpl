@@ -38,5 +38,20 @@ jobs:
 
       - name: update readme
         run: |
-         ls -l
-         ls -l output
+          ls -l
+          ls -l output
+      - name: Upload ${{ matrix.os }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: output-${{ matrix.os }}
+          path: output
+  update:
+    needs: [bench]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: output
+          pattern: output*
+          merge-multiple: true
