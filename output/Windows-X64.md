@@ -1,0 +1,31 @@
+| | array | loop |
+| --- | --- | --- |
+| bun |  |  |
+| node |  |  |
+| deno |  |  |
+| graaljs |  |  |
+| hermes |  |  |
+| llrt |  |  |
+| tjs |  |  |
+| qjs |  |  |
+| qjs-ng |  |  |
+| mujs |  |  |
+| mujs-pgo |  |  |
+| xst |  |  |
+| jsc |  |  |
+| d8 |  |  |
+| js |  |  |
+| rquickjs |  |  |
+| rqjs-pgo |  |  |
+| ch |  |  |
+| duk |  |  |
+| nova |  |  |
+| boa |  |  |
+| engine262 |  |  |
+| goja |  |  |
+| kiesel |  |  |
+| jint-cli |  |  |
+| dune |  |  |
+| rhino |  |  |
+| spiderfire |  |  |
+| quickjs-emscripten-cli |  |  |
